@@ -1,0 +1,14 @@
+<section class="event-details">
+  <div class="details">
+    <h1> <%= @movie.title %></h1>
+    <h2>
+       <%= @movie.released_on.year %>
+    </h2>
+    <h3>
+      <%= total_gross(@movie) %>
+    </h3>
+    <p>
+      <%= @movie.description %>
+    </p>
+  </div>
+</section>
