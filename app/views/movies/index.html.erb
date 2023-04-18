@@ -2,9 +2,9 @@
 
   <% @movies.each do |movie| %>
 
-    <li><%= movie.title %> (<%= movie.rating%>): <%= number_to_currency(movie.total_gross, precision:0)%></li>
-    <p><%= movie.description %></p>
-    <p><%= movie.released_on %></p>
+    <li><%= movie.title %> (<%= movie.rating%>): <%= total_gross(movie) %></li>
+    <p><%= word_wrap(movie.description, break_sequence: "\n") %></p>
+    <p><%= year_of(movie) %></p>
 
   <% end %>
 
