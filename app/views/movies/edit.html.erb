@@ -1,22 +1,4 @@
 <h1>Edit <%= @movie.title %> </h1>
 
-<%= form_with(model: @movie) do |m| %>
-
-  <%= m.label :title %>
-  <%= m.text_field :title %>
+<%= render "form", movie: @movie %>
   
-  <%= m.label :rating %>
-  <%= m.text_field :rating %>
-  
-  <%= m.label :total_gross %>
-  <%= m.number_field :total_gross %>
-  
-  <%= m.label :description %>
-  <%= m.text_area :description %>
-  
-  <%= m.label :released_on %>
-  <%= m.date_field :released_on %>
-
-  <%= m.submit %>
-
-<% end %>
