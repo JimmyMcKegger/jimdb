@@ -1,5 +1,8 @@
 
 <%= form_with(model: movie) do |f| %>
+  <%= movie.errors.full_messages.to_sentence %>
+
+  <%= render "shared/errors", object: movie %>
 
   <%= f.label :title %>
   <%= f.text_field :title, autofocus: true %>
