@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  RATINGS = %w(G PG PG-13 R NC-17)
+  RATINGS = %w[G PG PG-13 R NC-17].freeze
 
   validates :title, :released_on, :duration, presence: true
 
@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
   validates :rating, inclusion: { in: RATINGS }
 
   def self.released
-    where("released_on < ?", Time.now).order(released_on: :desc)
+    where('released_on < ?', Time.now).order(released_on: :desc)
   end
 
   def flop?

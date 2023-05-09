@@ -532,6 +532,7 @@ form:not([class="button_to"]) {
 
   &.notice {
     @extend .alert-success;
+    font-weight: 400
   }
 
   &.alert {
