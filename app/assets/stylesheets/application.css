@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .review-content {
+  margin-left: 1em; /* Adjust the value to your desired indentation */
+}

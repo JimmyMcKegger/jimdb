@@ -7,6 +7,12 @@
     <h2>
        <%= @movie.released_on.year %>
     </h2>
+
+     <div class="reviews">
+      <%= link_to pluralize(@movie.reviews.size, "review"),
+        movie_reviews_path(@movie.id) %>
+    </div>
+
     <p>
       <%= @movie.description %>
     </p>
