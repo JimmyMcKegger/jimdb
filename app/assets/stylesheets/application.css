@@ -13,7 +13,15 @@
  *= require_tree .
  *= require_self
  */
-
  .review-content {
-  margin-left: 1em; /* Adjust the value to your desired indentation */
+  margin-left: 1em;
+}
+.registrations li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Change color when hovering over the link */
+.registrations li a:hover {
+  color: #237CBE;
 }

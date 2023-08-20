@@ -13,4 +13,13 @@ class Review < ApplicationRecord
   def stars_as_percent
     (stars / 5.0) * 100.0
   end
+
+  STAR_OPTIONS = [
+    1,
+    2,
+    3,
+    4,
+    5
+  ].freeze
+
 end

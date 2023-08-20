@@ -2,14 +2,15 @@
 <ul class="registrations">
   <% @reviews.each do |review| %>
     <li>
-      <%= render "shared/stars", percent: review.stars_as_percent %>
-      <%= time_ago_in_words(review.created_at) %> ago from <%= review.name %>:
-      <div class="review-content">
-        <p>
-          <%= review.comment %>
-        </p>
-      </div>
+      <a href="<%= movie_review_path(@movie, review) %>">
+        <%= render "shared/stars", percent: review.stars_as_percent %>
+        <%= time_ago_in_words(review.created_at) %> ago from <%= review.name %>:
+        <div class="review-content">
+          <p>
+            <%= review.comment %>
+          </p>
+        </div>
+      </a>
     </li>
   <% end %>
-<ul>
-<%=  %>
+</ul>

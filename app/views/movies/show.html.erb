@@ -12,7 +12,10 @@
       <%= link_to pluralize(@movie.reviews.size, "review"),
         movie_reviews_path(@movie.id) %>
     </div>
-
+    <div>
+      <%= link_to  "Add Review", new_movie_review_path(@movie)%>
+    </div>
+    <br/>
     <p>
       <%= @movie.description %>
     </p>
@@ -35,6 +38,6 @@
 
 <section class="admin">
   <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
-  <%= link_to "Destroy", @movie, class: "button",
+  <%= link_to "Destroy", @movie, class: "btn btn-danger",
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </section>
