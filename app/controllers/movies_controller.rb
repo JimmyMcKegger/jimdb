@@ -43,7 +43,6 @@ class MoviesController < ApplicationController
     redirect_to movies_url, status: :see_other, alert: "#{@movie.title} deleted!"
   end
 
-
   private
 
   def movie_params

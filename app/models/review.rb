@@ -21,5 +21,4 @@ class Review < ApplicationRecord
     4,
     5
   ].freeze
-
 end

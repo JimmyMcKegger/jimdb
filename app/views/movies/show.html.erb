@@ -8,32 +8,35 @@
        <%= @movie.released_on.year %>
     </h2>
 
-     <div class="reviews">
-      <%= link_to pluralize(@movie.reviews.size, "review"),
-        movie_reviews_path(@movie.id) %>
+    <div class="reviews">
+      <%= avg_stars(@movie) %>
+      <% if @movie.reviews.present? %>
+        from <%= link_to pluralize(@movie.reviews.size, "review"), movie_reviews_path(@movie.id) %>
+      <% end %>
     </div>
-    <div>
-      <%= link_to  "Add Review", new_movie_review_path(@movie)%>
+
+      <div>
+        <%= link_to  "Add Review", new_movie_review_path(@movie)%>
+      </div>
+      <br/>
+      <p>
+        <%= @movie.description %>
+      </p>
+      <table>
+        <tr>
+          <th>Director:</th>
+          <td><%= @movie.director %></td>
+        </tr>
+        <tr>
+          <th>Duration:</th>
+          <td><%= @movie.duration %></td>
+        </tr>
+        <tr>
+          <th>Total Gross:</th>
+          <td><%= total_gross(@movie) %></td>
+        </tr>
+      </table>
     </div>
-    <br/>
-    <p>
-      <%= @movie.description %>
-    </p>
-    <table>
-      <tr>
-        <th>Director:</th>
-        <td><%= @movie.director %></td>
-      </tr>
-      <tr>
-        <th>Duration:</th>
-        <td><%= @movie.duration %></td>
-      </tr>
-      <tr>
-        <th>Total Gross:</th>
-        <td><%= total_gross(@movie) %></td>
-      </tr>
-    </table>
-  </div>
 </section>
 
 <section class="admin">

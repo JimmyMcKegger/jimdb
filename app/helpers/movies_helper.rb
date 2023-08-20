@@ -12,4 +12,13 @@ module MoviesHelper
   def year_of(movie)
     movie.released_on.year
   end
+
+  def avg_stars(movie)
+    if movie.average_stars.zero?
+      content_tag(:strong, 'No reviews')
+    else
+      render "shared/stars", percent: movie.average_stars_as_percent
+      # pluralize(number_with_precision(movie.average_stars, precision: 1), 'star')
+    end
+  end
 end

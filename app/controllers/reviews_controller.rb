@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
-
   before_action :set_movie
 
   def index
@@ -16,7 +15,7 @@ class ReviewsController < ApplicationController
     @review = @movie.reviews.new(review_params)
 
     if @review.save
-      redirect_to movie_reviews_path(@movie), notice: "Thanks for adding a review"
+      redirect_to movie_reviews_path(@movie), notice: 'Thanks for adding a review'
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +32,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update review_params
-      redirect_to movie_reviews_path(@movie), notice: "Review updated!"
+      redirect_to movie_reviews_path(@movie), notice: 'Review updated!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,11 +41,11 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
 
-    logger.info "Attempting to delete review..."
+    logger.info 'Attempting to delete review...'
 
-    if @review.destroy
-      redirect_to movie_reviews_path(@movie), notice: "Review deleted!"
-    end
+    return unless @review.destroy
+
+    redirect_to movie_reviews_path(@movie), notice: 'Review deleted!'
   end
 
   private
