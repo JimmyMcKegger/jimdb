@@ -3,6 +3,8 @@
 class Movie < ApplicationRecord
   RATINGS = %w[G PG PG-13 R NC-17].freeze
 
+  has_many :reviews, dependent: :destroy
+
   validates :title, :released_on, :duration, presence: true
 
   validates :description, length: { minimum: 25 }
