@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resource :session, only: [:new, :create, :desstroy]
+  get 'signin' => 'session#new'
+
   resources :users
   get 'signup' => 'users#new'
 end
