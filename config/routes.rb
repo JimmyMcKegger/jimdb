@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: %i[new create destroy]
   get 'signin' => 'sessions#new'
 
   resources :users
