@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
+  before_action :require_signin, except: %i[index show]
+  before_action :require_admin, except: %i[index show]
+
   def index
     @movies = Movie.released
   end
