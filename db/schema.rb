@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,39 +12,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_082801) do
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "rating"
-    t.decimal "total_gross"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description"
-    t.date "released_on"
-    t.string "director"
-    t.string "duration"
-    t.string "image_file_name", default: "placeholder.png"
+ActiveRecord::Schema[7.0].define(version: 20_230_828_082_801) do
+  create_table 'movies', force: :cascade do |t|
+    t.string 'title'
+    t.string 'rating'
+    t.decimal 'total_gross'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'description'
+    t.date 'released_on'
+    t.string 'director'
+    t.string 'duration'
+    t.string 'image_file_name', default: 'placeholder.png'
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "stars"
-    t.text "comment"
-    t.integer "movie_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+  create_table 'reviews', force: :cascade do |t|
+    t.integer 'stars'
+    t.text 'comment'
+    t.integer 'movie_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'user_id'
+    t.index ['movie_id'], name: 'index_reviews_on_movie_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "username"
-    t.boolean "admin", default: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.string 'password_digest'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'username'
+    t.boolean 'admin', default: false
   end
 
-  add_foreign_key "reviews", "movies"
+  add_foreign_key 'reviews', 'movies'
 end

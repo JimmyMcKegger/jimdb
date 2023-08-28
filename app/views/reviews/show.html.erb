@@ -1,7 +1,7 @@
 <h1>Review Details</h1>
 
 <%= render "shared/stars", percent: @review.stars_as_percent %>
-<%= time_ago_in_words(@review.created_at) %> ago from <%= @review.user.name %>:
+<%= time_ago_in_words(@review.created_at) %> ago from<%= @review.user.name %>:
 <div class="review-content">
   <p>
     <%= @review.comment %>
