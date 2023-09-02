@@ -34,4 +34,13 @@
       </div>
     <% end %>
   <% end %>
+
+  <% if @favourite_movies.present? %>
+    <h4>Favourite Movies:</h4>
+    <ul>
+      <% @favourite_movies.each do |fav_movie| %>
+        <li> <%= link_to fav_movie.title, fav_movie %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </section>
