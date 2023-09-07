@@ -3,7 +3,7 @@
 class Movie < ApplicationRecord
   RATINGS = %w[G PG PG-13 R NC-17].freeze
 
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, -> { order(created_at: :desc) }, dependent: :destroy
 
   has_many :critics, through: :reviews, source: :user
 
@@ -23,9 +23,15 @@ class Movie < ApplicationRecord
 
   validates :rating, inclusion: { in: RATINGS }
 
-  def self.released
-    where('released_on < ?', Time.now).order(released_on: :desc)
-  end
+  # def self.released
+  #   where('released_on < ?', Time.now).order(released_on: :desc)
+  # end
+
+  scope :released, -> { where('released_on < ?', Time.now).order(released_on: :desc) }
+  scope :upcoming, -> { where('released_on > ?', Time.now).order(released_on: :desc) }
+  scope :recent, ->(max=5) { released.limit(max) }
+  scope :hits, -> { released.where("total_gross >= 300000000").order(total_gross: :desc) }
+  scope :flops, -> { released.where("total_gross < 225000000").order(total_gross: :asc) }
 
   def flop?
     # exclude cult favorites from flops

@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   validates :stars,
             numericality: { only_integer: true, greater_than: 0, less_than: 6, message: 'must be between 1 and 5' }
 
+  scope :past_n_days, ->(num=7) { where("created_at >= ?" , num.days.ago) }
+
   def stars_as_percent
     (stars / 5.0) * 100.0
   end
