@@ -145,6 +145,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pg (1.5.4)
     popper_js (2.11.7)
     prettier_print (1.2.1)
     pry (0.14.2)
@@ -286,6 +287,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  pg
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
