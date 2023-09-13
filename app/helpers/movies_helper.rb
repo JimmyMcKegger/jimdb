@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 module MoviesHelper
-
   def main_image(movie)
     if movie.main_image.attached?
       image_tag(movie.main_image)
     else
-      image_tag("placeholder.png")
+      image_tag('placeholder.png')
     end
   end
 
@@ -33,7 +32,7 @@ module MoviesHelper
 
   def nav_link_to(text, url)
     if current_page?(url)
-      link_to(text, url, class: "active")
+      link_to(text, url, class: 'active')
     else
       link_to(text, url)
     end
