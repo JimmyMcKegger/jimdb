@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_signin, except: %i[new create]
   before_action :require_correct_user, only: %i[edit update]
   before_action :require_admin, only: [:destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   def index
     @users = User.not_admins
@@ -28,8 +28,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)

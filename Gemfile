@@ -19,8 +19,10 @@ group :development, :test do
 end
 
 group :production do
-  gem "pg"
+  gem 'pg'
 end
+
+gem "aws-sdk-s3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -86,8 +88,8 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "dockerfile-rails", ">= 1.5", :group => :development
+gem 'dockerfile-rails', '>= 1.5', group: :development
 
-gem "sentry-ruby", "~> 5.11"
+gem 'sentry-ruby', '~> 5.11'
 
-gem "sentry-rails", "~> 5.11"
+gem 'sentry-rails', '~> 5.11'

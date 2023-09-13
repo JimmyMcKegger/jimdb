@@ -3,7 +3,6 @@
 # typed: ignore
 
 class Movie < ApplicationRecord
-
   RATINGS = %w[G PG PG-13 R NC-17].freeze
 
   # Callbacks
@@ -25,13 +24,14 @@ class Movie < ApplicationRecord
   validates :total_gross, numericality: { greater_than_or_equal_to: 0 }
   validates :rating, inclusion: { in: RATINGS }
   validates :title, presence: true, uniqueness: true
+  validate :acceptable_image
 
   # Scopes
   scope :released, -> { where('released_on < ?', Time.now).order(released_on: :desc) }
   scope :upcoming, -> { where('released_on > ?', Time.now).order(released_on: :desc) }
-  scope :recent, ->(max=5) { released.limit(max) }
-  scope :hits, -> { released.where("total_gross >= 300000000").order(total_gross: :desc) }
-  scope :flops, -> { released.where("total_gross < 225000000").order(total_gross: :asc) }
+  scope :recent, ->(max = 5) { released.limit(max) }
+  scope :hits, -> { released.where('total_gross >= 300000000').order(total_gross: :desc) }
+  scope :flops, -> { released.where('total_gross < 225000000').order(total_gross: :asc) }
 
   def flop?
     # exclude cult favorites from flops
@@ -56,4 +56,16 @@ class Movie < ApplicationRecord
     slug
   end
 
+  def acceptable_image
+    return unless main_image.attached?
+
+    unless main_image.blob.byte_size <= 1.megabyte
+      errors.add(:main_image, "is too big")
+    end
+
+    acceptable_types = ["image/jpeg", "image/png"]
+    unless acceptable_types.include?(main_image.blob.content_type)
+      errors.add(:main_image, "must be a JPEG or PNG")
+    end
+  end
 end
